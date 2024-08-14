@@ -17,7 +17,8 @@ const fonts = [
   "Trebuchet MS",
   "Arial Black",
   "Impact",
-  "Roboto Slab"
+  "Roboto Slab",
+  "Playfair Display"
 ];
 
 const FontTester = () => {
@@ -26,9 +27,9 @@ const FontTester = () => {
   const [fontSize, setFontSize] = useState(16);
 
   useEffect(() => {
-    // Dynamically load Google Font
+    // Dynamically load Google Fonts
     const link = document.createElement('link');
-    link.href = 'https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap';
+    link.href = 'https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Playfair+Display&display=swap';
     link.rel = 'stylesheet';
     document.head.appendChild(link);
 
