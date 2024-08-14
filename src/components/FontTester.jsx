@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
@@ -16,13 +16,26 @@ const fonts = [
   "Comic Sans MS",
   "Trebuchet MS",
   "Arial Black",
-  "Impact"
+  "Impact",
+  "Roboto Slab"
 ];
 
 const FontTester = () => {
   const [selectedFont, setSelectedFont] = useState(fonts[0]);
   const [text, setText] = useState("The quick brown fox jumps over the lazy dog.");
   const [fontSize, setFontSize] = useState(16);
+
+  useEffect(() => {
+    // Dynamically load Google Font
+    const link = document.createElement('link');
+    link.href = 'https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+
+    return () => {
+      document.head.removeChild(link);
+    };
+  }, []);
 
   return (
     <div className="space-y-6">
@@ -72,7 +85,7 @@ const FontTester = () => {
 
       <div className="mt-6 p-4 border rounded-md">
         <h3 className="text-lg font-semibold mb-2">Preview:</h3>
-        <p style={{ fontFamily: selectedFont, fontSize: `${fontSize}px` }}>
+        <p style={{ fontFamily: `"${selectedFont}", sans-serif`, fontSize: `${fontSize}px` }}>
           {text}
         </p>
       </div>
