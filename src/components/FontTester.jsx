@@ -21,7 +21,7 @@ const fonts = [
 
 const FontTester = () => {
   const [selectedFont, setSelectedFont] = useState(fonts[0]);
-  const [text, setText] = useState("A brown fox jumps over the lazy dog.");
+  const [text, setText] = useState("The quick brown fox jumps over the lazy dog.");
   const [fontSize, setFontSize] = useState(16);
 
   return (
